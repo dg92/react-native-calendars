@@ -12,7 +12,7 @@ export default function shouldComponentUpdate(nextProps, nextState) {
     return prev;
   }, {update: false});
 
-  shouldUpdate = ['markedDates', 'hideExtraDays', 'displayLoadingIndicator'].reduce((prev, next) => {
+  shouldUpdate = ['markedDates', 'hideExtraDays', 'displayLoadingIndicator', 'showCalendar'].reduce((prev, next) => {
     if (!prev.update && nextProps[next] !== this.props[next]) {
       return {
         update: true,
@@ -41,6 +41,12 @@ export default function shouldComponentUpdate(nextProps, nextState) {
   }, shouldUpdate);
 
   if (nextState.currentMonth !== this.state.currentMonth) {
+    shouldUpdate = {
+      update: true,
+      field: 'current'
+    };
+  }
+  if (nextState.showCalendar !== this.state.showCalendar) {
     shouldUpdate = {
       update: true,
       field: 'current'
