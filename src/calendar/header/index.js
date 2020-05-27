@@ -163,7 +163,7 @@ class CalendarHeader extends Component {
         <View style={this.style.header}>
           {leftArrow}
           <View style={{flexDirection: 'row'}}>
-              <TouchableOpacity onPress={this.props.onHeaderPress}>
+              <TouchableOpacity onPress={() => this.props.onHeaderPress()}>
                 <Text
                   allowFontScaling={false}
                   style={this.style.monthText}

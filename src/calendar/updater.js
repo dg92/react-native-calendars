@@ -46,11 +46,5 @@ export default function shouldComponentUpdate(nextProps, nextState) {
       field: 'current'
     };
   }
-  if (nextState.showCalendar !== this.state.showCalendar) {
-    shouldUpdate = {
-      update: true,
-      field: 'current'
-    };
-  }
   return shouldUpdate.update;
 }
