@@ -25,7 +25,8 @@ class CalendarHeader extends Component {
     onPressArrowRight: PropTypes.func,
     disableArrowLeft: PropTypes.bool,
     disableArrowRight: PropTypes.bool,
-    webAriaLevel: PropTypes.number
+    webAriaLevel: PropTypes.number,
+    onHeaderPress: PropTypes.func,
   };
 
   static defaultProps = {
@@ -162,14 +163,16 @@ class CalendarHeader extends Component {
         <View style={this.style.header}>
           {leftArrow}
           <View style={{flexDirection: 'row'}}>
-            <Text
-              allowFontScaling={false}
-              style={this.style.monthText}
-              {...webProps}
-              testID={testID ? `${HEADER_MONTH_NAME}-${testID}`: HEADER_MONTH_NAME}
-            >
-              {this.props.month.toString(this.props.monthFormat)}
-            </Text>
+              <TouchableOpacity onPress={this.props.onHeaderPress}>
+                <Text
+                  allowFontScaling={false}
+                  style={this.style.monthText}
+                  {...webProps}
+                  testID={testID ? `${HEADER_MONTH_NAME}-${testID}`: HEADER_MONTH_NAME}
+                >
+                  {this.props.month.toString(this.props.monthFormat)}
+                </Text>
+            </TouchableOpacity>
             {indicator}
           </View>
           {rightArrow}

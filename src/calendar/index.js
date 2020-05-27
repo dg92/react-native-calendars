@@ -86,6 +86,7 @@ class Calendar extends Component {
     /** Provide aria-level for calendar heading for proper accessibility when used with web (react-native-web) */
     webAriaLevel: PropTypes.number,
     showCalendar: PropTypes.bool,
+    onHeaderPress: PropTypes.func,
   };
 
   constructor(props) {
@@ -329,6 +330,7 @@ class Calendar extends Component {
           webAriaLevel={this.props.webAriaLevel}
           disableArrowLeft={this.props.disableArrowLeft}
           disableArrowRight={this.props.disableArrowRight}
+          onHeaderPress={this.props.onHeaderPress}
         />
         {!this.props.showCalendar && <View style={this.style.monthView}>{weeks}</View>}
       </View>);
